@@ -4,6 +4,10 @@ const { ObjectId } = require('mongodb');
 const express = require('express');
 const defaultRouter = express.Router();
 
+defaultRouter.get('/', async (req, res) => {
+    return res.redirect('/admin');
+});
+
 defaultRouter.get('/verify', async (req, res) => {
     return res.render('pages/error');
 });
