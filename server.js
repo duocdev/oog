@@ -9,7 +9,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/session-cache' })
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://admin:duoc@cluster0.o074a.mongodb.net/oog?retryWrites=true&w=majority' })
 }));
 
 app.set('view engine', 'ejs');

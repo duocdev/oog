@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const client = new MongoClient('mongodb://localhost:27017/oog', { useNewUrlParser: true });
+const client = new MongoClient('mongodb+srv://admin:duoc@cluster0.o074a.mongodb.net/oog?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const mongo = {
     getDB: async () => { 
