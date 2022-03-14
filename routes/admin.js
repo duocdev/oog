@@ -116,7 +116,7 @@ adminRouter.get('/admin', (req, res) => {
     res.redirect('/admin/dashboard');
 });
 
-adminRouter.get('/admin/dashboard', async(req, res) => {
+adminRouter.get('/admin/dashboard', async (req, res) => {
     if (!req.session.user) {
         return res.redirect('/login');
     }
@@ -129,7 +129,7 @@ adminRouter.get('/admin/dashboard', async(req, res) => {
     let countQRCODE = await QRCODEs.countDocuments();
 
 
-  
+
     res.render('admin/dashboard', { user: req.session.user, countProduct, countQRCODE });
 });
 
@@ -352,7 +352,7 @@ adminRouter.post('/admin/create-qrcode', async (req, res) => {
     const product = await Products.findOne({ productID: maSanPham });
 
     for (let i = 0; i < result.insertedCount; i++) {
-        let qrcode = await QRCODE.toDataURL("http://localhost:3000/verify/" + result.insertedIds[i]);
+        let qrcode = await QRCODE.toDataURL("http://" + req.headers.host.toString() + "/verify/" + result.insertedIds[i]);
         list_qrcode.push({ image: qrcode, seri: result.insertedIds[i], productID: product.productID });
     }
 
