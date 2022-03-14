@@ -352,7 +352,7 @@ adminRouter.post('/admin/create-qrcode', async (req, res) => {
     const product = await Products.findOne({ productID: maSanPham });
 
     for (let i = 0; i < result.insertedCount; i++) {
-        let qrcode = await QRCODE.toDataURL("http://" + req.headers.host.toString() + "/verify/" + result.insertedIds[i]);
+        let qrcode = await QRCODE.toDataURL( req.hostname.toString() + "/verify/" + result.insertedIds[i]);
         list_qrcode.push({ image: qrcode, seri: result.insertedIds[i], productID: product.productID });
     }
 
